@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Gofretle, retle. — Doğu Şekerleme Kampanya Sunumu</title>
+<meta name="description" content="Doğu Şekerleme 1949 Mini Gofret 'Retle' kampanyası — interaktif sunum.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --cream: #F5EDD8;
+  --cream-deep: #EBE0C4;
+  --ink: #1A1713;
+  --ink-soft: #3A332B;
+  --gold: #D4A531;
+  --gold-deep: #A8811E;
+  --red: #C2362B;
+  --red-deep: #8A2219;
+  --coffee: #4A2E1F;
+  --coffee-light: #6B4428;
+  --paper: #FAF4E3;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(212, 165, 49, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(194, 54, 43, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  padding: 40px 0 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 20px;
+  margin-bottom: 60px;
+}
+
+.brand-mark {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.brand-mark span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--coffee-light);
+}
+
+.meta-row {
+  display: flex;
+  gap: 24px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.meta-row span {
+  position: relative;
+  padding-left: 14px;
+}
+
+.meta-row span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+}
+
+.hero-main {
+  position: relative;
+}
+
+.hero-title {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: clamp(72px, 14vw, 220px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-transform: lowercase;
+  position: relative;
+}
+
+.hero-title .line-1 {
+  display: block;
+  color: var(--ink);
+}
+
+.hero-title .line-2 {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.45em;
+  color: var(--coffee);
+  padding-left: 8%;
+  margin-top: -0.1em;
+  letter-spacing: -0.01em;
+}
+
+.hero-title .line-3 {
+  display: block;
+  position: relative;
+}
+
+.hero-title .retle-word {
+  background: var(--red);
+  color: var(--paper);
+  padding: 0 0.15em;
+  display: inline-block;
+  transform: rotate(-2deg);
+  position: relative;
+}
+
+.hero-title .retle-word::after {
+  content: '.';
+  position: absolute;
+  right: 0.1em;
+  bottom: 0.1em;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  margin-top: 40px;
+  max-width: 600px;
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.hero-subtitle em {
+  font-style: italic;
+  color: var(--red);
+}
+
+.hero-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 23, 19, 0.3);
+}
+
+.scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coffee-light);
+}
+
+.scroll-cue .line {
+  width: 60px;
+  height: 1px;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-cue .line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 1px;
+  background: var(--red);
+  animation: scroll-slide 2s ease-in-out infinite;
+}
+
+@keyframes scroll-slide {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(40px); }
+}
+
+.hero-stamp {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--coffee);
+  text-align: right;
+}
+
+.hero-stamp strong {
+  display: block;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 32px;
+  color: var(--gold-deep);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--red);
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  margin-bottom: 40px;
+  max-width: 900px;
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ===== METRICS ===== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  margin-top: 40px;
+}
+
+.metric {
+  background: var(--paper);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  transition: background 0.3s;
+}
+
+.metric:hover { background: var(--cream-deep); }
+
+.metric-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coffee-light);
+  font-weight: 500;
+}
+
+.metric-value {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin-top: auto;
+}
+
+.metric:nth-child(2) .metric-value { color: var(--red); }
+.metric:nth-child(4) .metric-value { color: var(--gold-deep); }
+
+.metric-foot {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--coffee);
+  margin-top: 8px;
+}
+
+/* ===== INSIGHT QUOTE ===== */
+.insight {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 120px 0;
+  margin: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.insight::before {
+  content: '"';
+  position: absolute;
+  top: -60px;
+  left: 40px;
+  font-family: 'Fraunces', serif;
+  font-size: 400px;
+  color: var(--red);
+  opacity: 0.15;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.insight-content { position: relative; z-index: 2; }
+
+.insight-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.insight-quote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  max-width: 1000px;
+}
+
+.insight-quote em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.insight-quote .highlight {
+  background: var(--red);
+  padding: 0 0.1em;
+  font-style: normal;
+}
+
+.insight-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(245, 237, 216, 0.2);
+}
+
+.pillar {
+  position: relative;
+}
+
+.pillar-num {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.pillar-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--cream);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.pillar-desc {
+  font-size: 13px;
+  color: rgba(245, 237, 216, 0.6);
+  letter-spacing: 0.05em;
+}
+
+/* ===== SLOGAN GENERATOR ===== */
+.generator {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 80px 60px;
+  position: relative;
+  margin-top: 40px;
+}
+
+.generator::before {
+  content: 'jeneratör';
+  position: absolute;
+  top: -14px;
+  left: 40px;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 4px 16px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.generator-display {
+  text-align: center;
+  margin-bottom: 60px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gen-prefix {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--coffee);
+  margin-bottom: 8px;
+}
+
+.gen-word {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: clamp(56px, 10vw, 120px);
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  display: inline-block;
+  transition: opacity 0.2s, transform 0.3s;
+  text-transform: lowercase;
+}
+
+.gen-word.changing {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.gen-retle {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: clamp(56px, 10vw, 120px);
+  line-height: 1;
+  background: var(--red);
+  color: var(--paper);
+  padding: 0 0.2em;
+  display: inline-block;
+  transform: rotate(-1.5deg);
+  margin-top: 12px;
+  letter-spacing: -0.02em;
+}
+
+.gen-retle::after {
+  content: '.';
+  color: var(--gold);
+}
+
+.slogan-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.slogan-btn {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-style: italic;
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 400;
+}
+
+.slogan-btn:hover {
+  background: var(--ink);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+.slogan-btn.active {
+  background: var(--red);
+  color: var(--paper);
+  border-color: var(--red);
+}
+
+/* ===== FILM STORYBOARD ===== */
+.storyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  margin-top: 40px;
+}
+
+.scene {
+  background: var(--paper);
+  padding: 32px 24px;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.scene:hover { background: var(--cream-deep); }
+
+.scene-timecode {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--coffee-light);
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+
+.scene-number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 48px;
+  color: var(--cream-deep);
+  line-height: 1;
+}
+
+.scene-title {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.scene-body {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  flex-grow: 1;
+}
+
+.scene-retle {
+  margin-top: auto;
+  background: var(--red);
+  color: var(--paper);
+  padding: 6px 14px;
+  display: inline-block;
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+  margin-top: 20px;
+  transform: rotate(-1deg);
+}
+
+.scene.finale {
+  background: var(--gold);
+}
+
+.scene.finale .scene-title,
+.scene.finale .scene-body { color: var(--ink); }
+
+.scene.finale .scene-number { color: var(--gold-deep); }
+
+.scene.finale .scene-retle {
+  background: var(--ink);
+}
+
+/* ===== MEDIA BUDGET ===== */
+.budget-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.budget-total {
+  text-align: left;
+  padding: 40px 0;
+}
+
+.budget-total-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--coffee-light);
+  margin-bottom: 8px;
+}
+
+.budget-total-value {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+
+.budget-total-value span {
+  color: var(--red);
+}
+
+.budget-note {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--coffee);
+  margin-top: 16px;
+  max-width: 400px;
+  line-height: 1.4;
+}
+
+.chart-container {
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 32px;
+  height: 400px;
+  position: relative;
+}
+
+/* ===== SOCIAL ACTIVATION ===== */
+.social-hero {
+  background: var(--red);
+  color: var(--paper);
+  padding: 80px 60px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-hero::before {
+  content: '#';
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 500px;
+  color: rgba(255, 255, 255, 0.08);
+  line-height: 1;
+}
+
+.hashtag {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.hashtag .hash { color: var(--gold); }
+
+.social-desc {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  line-height: 1.5;
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+}
+
+.social-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.step {
+  border-top: 2px solid var(--gold);
+  padding-top: 16px;
+}
+
+.step-num {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.step-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* ===== VISUAL DO/DONT ===== */
+.vis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.vis-card {
+  padding: 40px;
+  position: relative;
+  min-height: 360px;
+}
+
+.vis-do {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+}
+
+.vis-dont {
+  background: var(--ink);
+  color: var(--cream);
+  border: 2px solid var(--ink);
+}
+
+.vis-badge {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.vis-do .vis-badge {
+  color: var(--ink);
+  border-bottom: 4px solid var(--gold);
+  padding-bottom: 4px;
+}
+
+.vis-dont .vis-badge {
+  color: var(--cream);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 4px;
+}
+
+.vis-list {
+  list-style: none;
+}
+
+.vis-list li {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  padding: 12px 0;
+  border-bottom: 1px dashed currentColor;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vis-list li:last-child { border-bottom: none; }
+
+.vis-list li::before {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: 13px;
+  color: var(--red);
+  min-width: 24px;
+}
+
+.vis-do .vis-list li:nth-child(1)::before { content: '01'; }
+.vis-do .vis-list li:nth-child(2)::before { content: '02'; }
+.vis-do .vis-list li:nth-child(3)::before { content: '03'; }
+.vis-do .vis-list li:nth-child(4)::before { content: '04'; }
+.vis-do .vis-list li:nth-child(5)::before { content: '05'; }
+
+.vis-dont .vis-list li::before { color: var(--gold); }
+.vis-dont .vis-list li:nth-child(1)::before { content: '×'; font-size: 24px; }
+.vis-dont .vis-list li:nth-child(2)::before { content: '×'; font-size: 24px; }
+.vis-dont .vis-list li:nth-child(3)::before { content: '×'; font-size: 24px; }
+.vis-dont .vis-list li:nth-child(4)::before { content: '×'; font-size: 24px; }
+.vis-dont .vis-list li:nth-child(5)::before { content: '×'; font-size: 24px; }
+
+.vis-dont .vis-list li { font-style: italic; opacity: 0.8; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 80px 0 40px;
+  margin-top: 120px;
+  position: relative;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(245, 237, 216, 0.2);
+}
+
+.footer-title {
+  font-family: 'Bowlby One', sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.footer-title .retle-word {
+  background: var(--red);
+  color: var(--paper);
+  padding: 0 0.1em;
+  display: inline-block;
+  transform: rotate(-2deg);
+}
+
+.footer-heritage {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(245, 237, 216, 0.6);
+}
+
+.footer-heritage strong {
+  display: block;
+  font-size: 32px;
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.footer-legal {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 216, 0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .storyboard { grid-template-columns: repeat(2, 1fr); }
+  .insight-pillars { grid-template-columns: repeat(2, 1fr); }
+  .social-steps { grid-template-columns: repeat(2, 1fr); }
+  .budget-wrap { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  section { padding: 60px 0; }
+  .hero-top { flex-direction: column; gap: 16px; }
+  .meta-row { flex-wrap: wrap; gap: 12px; }
+  .hero-footer { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .metrics-grid, .storyboard, .insight-pillars, .social-steps { grid-template-columns: 1fr; }
+  .vis-grid { grid-template-columns: 1fr; }
+  .generator { padding: 60px 24px; }
+  .social-hero { padding: 48px 28px; }
+  .chart-container { padding: 20px; height: 320px; }
+  .budget-total-value { font-size: 64px; }
+}
+
+/* Fade-in on scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div class="brand-mark">DOĞU ŞEKERLEME <span>— est. 1949</span></div>
+      <div class="meta-row">
+        <span>Kampanya Q2 2026</span>
+        <span>Z + Genç Milenyal</span>
+        <span>Türkiye</span>
+      </div>
+    </div>
+
+    <div class="hero-main">
+      <h1 class="hero-title">
+        <span class="line-1">mini</span>
+        <span class="line-2">gofretle,</span>
+        <span class="line-3"><span class="retle-word">retle</span></span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Bir slogan değil — <em>refleks</em>. Hayatın küçük krizlerine mikro çözüm. 10 saniyelik dopamin snack.
+      </p>
+    </div>
+
+    <div class="hero-footer">
+      <div class="scroll-cue">
+        <span>Aşağı kaydır</span>
+        <span class="line"></span>
+      </div>
+      <div class="hero-stamp">
+        <strong>77</strong>
+        yıllık miras<br>yeni nesil dil
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<section>
+  <div class="container">
+    <div class="section-label">Hedefler · 3 ay</div>
+    <h2 class="section-title">Sayılarla <em>ne vaad ediyoruz</em></h2>
+
+    <div class="metrics-grid fade-in">
+      <div class="metric">
+        <div class="metric-label">Erişim</div>
+        <div>
+          <div class="metric-value">8M+</div>
+          <div class="metric-foot">Türkiye genç kitle</div>
+        </div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">UGC video</div>
+        <div>
+          <div class="metric-value">15K</div>
+          <div class="metric-foot">#SenNeyiRetliyorsun</div>
+        </div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Satış artışı</div>
+        <div>
+          <div class="metric-value">+30%</div>
+          <div class="metric-foot">Mini SKU kampanya dönemi</div>
+        </div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Earned media</div>
+        <div>
+          <div class="metric-value">3×</div>
+          <div class="metric-foot">Ad spend karşılığı</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSIGHT ===== -->
+<section class="insight">
+  <div class="container">
+    <div class="insight-content">
+      <div class="insight-label">Ana içgörü</div>
+      <p class="insight-quote">
+        Kimse 2026'da <em>büyük mutluluk</em> aramıyor. Herkes günde 10-15 saniyelik <span class="highlight">küçük kaçışlar</span> topluyor.
+      </p>
+
+      <div class="insight-pillars fade-in">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-name">küçük</div>
+          <div class="pillar-desc">CEBE SIĞAR</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-name">pratik</div>
+          <div class="pillar-desc">TEK ISIRIK</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-name">anlık</div>
+          <div class="pillar-desc">BEKLEMEZ</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div class="pillar-name">suçluluksuz</div>
+          <div class="pillar-desc">MİNİ PORSİYON</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLOGAN GENERATOR ===== -->
+<section>
+  <div class="container">
+    <div class="section-label">Slogan platformu</div>
+    <h2 class="section-title">Tek cümle, <em>sonsuz varyasyon</em></h2>
+
+    <div class="generator fade-in">
+      <div class="generator-display">
+        <div class="gen-prefix">Mini Gofretle,</div>
+        <div class="gen-word" id="genWord">açlığı</div>
+        <div class="gen-retle">retle</div>
+      </div>
+
+      <div class="slogan-buttons">
+        <button class="slogan-btn active" data-word="açlığı">açlığı</button>
+        <button class="slogan-btn" data-word="trafiği">trafiği</button>
+        <button class="slogan-btn" data-word="toplantıyı">toplantıyı</button>
+        <button class="slogan-btn" data-word="stresi">stresi</button>
+        <button class="slogan-btn" data-word="pazartesiyi">pazartesiyi</button>
+        <button class="slogan-btn" data-word="ex'i">ex'i</button>
+        <button class="slogan-btn" data-word="tripleri">tripleri</button>
+        <button class="slogan-btn" data-word="boşluğu">boşluğu</button>
+        <button class="slogan-btn" data-word="alarmı">alarmı</button>
+        <button class="slogan-btn" data-word="sıkıntıyı">sıkıntıyı</button>
+        <button class="slogan-btn" data-word="yorgunluğu">yorgunluğu</button>
+        <button class="slogan-btn" data-word="derdi">derdi</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILM STORYBOARD ===== -->
+<section>
+  <div class="container">
+    <div class="section-label">Hero film · 30 saniye</div>
+    <h2 class="section-title">Dört kriz, <em>tek refleks</em></h2>
+
+    <div class="storyboard fade-in">
+      <div class="scene">
+        <div class="scene-number">01</div>
+        <div class="scene-timecode">00:00 — 00:07</div>
+        <div class="scene-title">Metro</div>
+        <p class="scene-body">Kalabalık vagon, omza çarpma. Göz devirme. "Sıkıntıyı..." Çantadan mini. Isırık.</p>
+        <span class="scene-retle">RETLE.</span>
+      </div>
+      <div class="scene">
+        <div class="scene-number">02</div>
+        <div class="scene-timecode">00:07 — 00:14</div>
+        <div class="scene-title">Ofis</div>
+        <p class="scene-body">47 okunmamış mail. Arkaya yaslanma. "Stresi..." Çekmeceden mini. Isırık.</p>
+        <span class="scene-retle">RETLE.</span>
+      </div>
+      <div class="scene">
+        <div class="scene-number">03</div>
+        <div class="scene-timecode">00:14 — 00:22</div>
+        <div class="scene-title">Trafik</div>
+        <p class="scene-body">Kırmızı ışık. Korna. Camdan bakış. "Trafiği..." Bardaklıktan mini. Isırık.</p>
+        <span class="scene-retle">RETLE.</span>
+      </div>
+      <div class="scene finale">
+        <div class="scene-number">04</div>
+        <div class="scene-timecode">00:22 — 00:30</div>
+        <div class="scene-title">Pay-off</div>
+        <p class="scene-body">Üç karakter, üç farklı yer, aynı anda ısırık. Logo: Doğu Şekerleme, 1949'dan beri.</p>
+        <span class="scene-retle">MİNİ GOFRETLE.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEDIA BUDGET ===== -->
+<section>
+  <div class="container">
+    <div class="section-label">Medya planı</div>
+    <h2 class="section-title">Bütçe <em>dağılımı</em></h2>
+
+    <div class="budget-wrap fade-in">
+      <div class="budget-total">
+        <div class="budget-total-label">Toplam</div>
+        <div class="budget-total-value"><span>₺</span>12M</div>
+        <p class="budget-note">3 aylık kampanya dönemi boyunca dijital ağırlıklı, outdoor destekli, sosyalle büyütülen bütünleşik dağılım.</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="budgetChart" role="img" aria-label="Medya bütçe dağılımı">Dijital 45%, Outdoor 20%, Influencer 20%, Retail 10%, Prodüksiyon 5%</canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOCIAL ACTIVATION ===== -->
+<section>
+  <div class="container">
+    <div class="section-label">Sosyal aktivasyon</div>
+    <h2 class="section-title">Reklamı <em>kullanıcıya</em> yaptırmak</h2>
+
+    <div class="social-hero fade-in">
+      <div class="hashtag"><span class="hash">#</span>SenNeyiRetliyorsun</div>
+      <p class="social-desc">
+        Marka 5 hazır "retle" versiyonu yayınlar. Kullanıcı kendi kriz anını çeker, ısırık alır, RETLE yazısıyla biter. Haftanın en iyi 10'u marka hesabında yer alır. Reklam kültüre dönüşür.
+      </p>
+      <div class="social-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-text">Format basit — telefonla çekilir</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-text">Kalıp esnek — her hayata uyar</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-text">Kafiye yapışkan — kulaktan çıkmaz</div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-text">Üretim ucuz — viral büyür</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISUAL LANGUAGE ===== -->
+<section>
+  <div class="container">
+    <div class="section-label">Görsel dil</div>
+    <h2 class="section-title">Yap — <em>yapma</em></h2>
+
+    <div class="vis-grid fade-in">
+      <div class="vis-card vis-do">
+        <div class="vis-badge">YAP</div>
+        <ul class="vis-list">
+          <li>Yürürken yakalanan ısırık</li>
+          <li>Kaykay üstünde tek el</li>
+          <li>Otobüs camına yaslanmış</li>
+          <li>Ders arasında koridorda</li>
+          <li>Çantadan yarı görünür</li>
+        </ul>
+      </div>
+      <div class="vis-card vis-dont">
+        <div class="vis-badge">YAPMA</div>
+        <ul class="vis-list">
+          <li>Tabakta poz veren ürün</li>
+          <li>Stüdyo beyaz fon</li>
+          <li>Steril food photography</li>
+          <li>Masada dizilmiş set</li>
+          <li>Tam kadraj ürün vitrini</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-main">
+      <h2 class="footer-title">
+        Mini Gofretle,<br>
+        <span class="retle-word">her şeyi retle</span>.
+      </h2>
+      <div class="footer-heritage">
+        <strong>1949</strong>
+        Doğu Şekerleme<br>
+        77 yıllık miras,<br>
+        yeni nesil dil.
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>Kampanya konsept sunumu</span>
+      <span>Q2 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Slogan generator
+(function() {
+  const word = document.getElementById('genWord');
+  const buttons = document.querySelectorAll('.slogan-btn');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      word.classList.add('changing');
+      setTimeout(() => {
+        word.textContent = btn.dataset.word;
+        word.classList.remove('changing');
+      }, 200);
+    });
+  });
+
+  // Auto-rotate slogan every 3.5s until user interacts
+  let autoIndex = 0;
+  let userInteracted = false;
+
+  buttons.forEach(b => b.addEventListener('click', () => { userInteracted = true; }));
+
+  const autoRotate = setInterval(() => {
+    if (userInteracted) { clearInterval(autoRotate); return; }
+    autoIndex = (autoIndex + 1) % buttons.length;
+    buttons[autoIndex].click();
+    userInteracted = false;
+  }, 3500);
+})();
+
+// Fade-in on scroll
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+})();
+
+// Budget chart
+(function() {
+  const ctx = document.getElementById('budgetChart');
+  if (!ctx) return;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Dijital + sosyal', 'Outdoor', 'Influencer + PR', 'Retail aktivasyon', 'Prodüksiyon'],
+      datasets: [{
+        data: [45, 20, 20, 10, 5],
+        backgroundColor: ['#C2362B', '#D4A531', '#4A2E1F', '#A8811E', '#6B4428'],
+        borderRadius: 2,
+        borderSkipped: false,
+        barThickness: 28
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1A1713',
+          titleFont: { family: 'Inter', size: 12, weight: 500 },
+          bodyFont: { family: 'Fraunces', size: 14, style: 'italic' },
+          padding: 12,
+          callbacks: {
+            label: (c) => c.parsed.x + '% · ₺' + (c.parsed.x * 0.12).toFixed(1) + 'M'
+          }
+        }
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          max: 50,
+          ticks: {
+            callback: v => v + '%',
+            font: { family: 'Inter', size: 11 },
+            color: '#6B4428'
+          },
+          grid: { color: 'rgba(26, 23, 19, 0.08)' },
+          border: { color: '#1A1713' }
+        },
+        y: {
+          ticks: {
+            font: { family: 'Fraunces', size: 14, style: 'italic' },
+            color: '#1A1713'
+          },
+          grid: { display: false },
+          border: { color: '#1A1713' }
+        }
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
